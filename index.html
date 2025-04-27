@@ -1,0 +1,441 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Josmy Mathew - Personal Portfolio</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            background: linear-gradient(to bottom, #4b6cb7, #182848);
+            color: white;
+        }
+        
+
+        .about-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px;
+        }
+
+        .section-title {
+            color: #182848;
+            border-bottom: 2px solid #4b6cb7;
+            padding-bottom: 10px;
+            margin: 40px 0 25px;
+            font-size: 1.8em;
+        }
+
+        .intro-card {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(75, 108, 183, 0.1);
+            margin-bottom: 40px;
+            border-left: 4px solid #4b6cb7;
+        }
+
+        /* Experience Timeline */
+        .timeline {
+            position: relative;
+            margin: 40px 0;
+        }
+
+        .timeline-item {
+            padding: 20px 0 20px 30px;
+            border-left: 2px solid #4b6cb7;
+            position: relative;
+            margin-left: 20px;
+        }
+
+            .timeline-item:before {
+                content: '';
+                width: 16px;
+                height: 16px;
+                background: #4b6cb7;
+                border-radius: 50%;
+                position: absolute;
+                left: -9px;
+                top: 25px;
+            }
+
+        .timeline-date {
+            color: #4b6cb7;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        /* Project Highlights */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+
+        .project-card {
+            background: white;
+            padding: 20px;
+            border-radius: 6px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+            border-top: 3px solid #4b6cb7;
+        }
+
+            .project-card:hover {
+                transform: translateY(-5px);
+            }
+
+            .project-card h3 {
+                color: #182848;
+                margin-bottom: 10px;
+            }
+
+        .left-section {
+            width: 30%;
+            text-align: center;
+            padding: 20px;
+            display: flex;
+            
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden; /* Prevent scrolling */
+            background: rgba(0, 0, 0, 0.3);
+            left: 0;
+            top: 0;
+            flex-direction: column;
+            box-sizing: border-box; /* Includes padding in width calculation */
+            z-index: 10; /* Ensures sidebar stays above other content */
+        }
+
+        .profile-pic {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 20px;
+        }
+
+        .right-section {
+            width: 70%;
+            background: white;
+            color: black;
+            padding: 40px;
+            position: relative;
+            box-sizing: border-box;
+        }
+        /* Professional styling for your about section */
+        .about-section {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 30px;
+            line-height: 1.7;
+            color: #333;
+        }
+
+        .about-header {
+            color: #2c3e50;
+            border-bottom: 2px solid #4b6cb7;
+            padding-bottom: 10px;
+            margin-bottom: 25px;
+        }
+
+        .experience-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .experience-card {
+            background: #f9f9f9;
+            padding: 25px;
+            border-radius: 5px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+            border-left: 4px solid #4b6cb7;
+        }
+
+            .experience-card h3 {
+                color: #4b6cb7;
+                margin-bottom: 15px;
+            }
+
+        .skills-list {
+            columns: 2;
+            margin: 20px 0;
+        }
+
+        @media (max-width: 768px) {
+            .skills-list {
+                columns: 1;
+            }
+        }
+        /* Banner Styles - Fixed to ensure visibility */
+        .banner {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #4b6cb7 0%, #3a56a0 50%, #182848 100%);
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2.5em;
+            font-weight: bold;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+            border-radius: 5px;
+            overflow: hidden; /* Ensures content stays within banner */
+        }
+
+        h1, h2, h3 {
+            margin-top: 10px;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+            ul li {
+                margin-bottom: 10px;
+            }
+
+        .social-icons img {
+            width: 30px;
+            margin: 10px;
+            filter: brightness(0) invert(1);
+        }
+
+        /* My Works Section Styles */
+        .projects-nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 30px 0;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+
+            .projects-nav a {
+                color: #4b6cb7;
+                text-decoration: none;
+                font-weight: bold;
+                padding: 5px 10px;
+                border-radius: 5px;
+                transition: all 0.3s ease;
+            }
+
+                .projects-nav a:hover {
+                    background-color: #4b6cb7;
+                    color: white;
+                }
+
+        .project-card {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .project-title {
+            color: #4b6cb7;
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        .project-meta {
+            font-style: italic;
+            color: #666;
+            margin-bottom: 15px;
+        }
+        /* Optional: Add smooth scrolling behavior */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <div class="left-section"id="sidebar"
+  style="background: rgba(0,0,0,0.3);"
+  aria-label="Profile Section"  data-scroll="disabled">
+        <img src="josmy.jpeg" alt="Profile Picture" class="profile-pic">
+        <h1>I am Josmy Mathew</h1>
+        <p>Data Scientist, Data Analyst, Full Stack Developer, IT Mentor and Coach</p>
+        <div class="social-icons">
+            <a href="https://www.linkedin.com/in/josmymathew/">LinkedIn</a>
+            <a href="https://github.com/josmyrose">GitHub</a>
+            
+      
+        </div>
+        <p>© Josmy Mathew</p>
+    </div>
+
+    <div class="right-section">
+        <div class="banner">
+            <img src="banner1.jpg" alt="Banner" style="width:100%; height:auto; margin-bottom:20px;">
+        </div>
+
+        <section class="about-section">
+            <h2 class="about-header">Professional Profile</h2>
+
+            <p>I am <strong>Josmy Mathew</strong>, a passionate Data Science professional with expertise in transforming complex data into actionable insights. With 15+ years of combined experience in IT mentoring and cutting-edge data analysis, I bridge the gap between technical implementation and business strategy.</p>
+
+            <div class="experience-grid">
+                <div class="experience-card">
+                    <h3>Data Science Expertise</h3>
+                    <ul>
+                        <li>Advanced analytics using Python (Pandas, NumPy, Scikit-learn)</li>
+                        <li>Machine Learning model development and deployment</li>
+                        <li>Natural Language Processing (NLP) and text mining</li>
+                        <li>Data visualization with Tableau and Power BI</li>
+                        <li>Big Data technologies and cloud platforms</li>
+                    </ul>
+                </div>
+
+                <div class="experience-card">
+                    <h3>Full Stack Development</h3>
+                    <ul>
+                        <li>End-to-end web application development</li>
+                        <li>Database design and optimization</li>
+                        <li>API development and integration</li>
+                        <li>Responsive UI/UX implementation</li>
+                        <li>Cloud deployment and DevOps practices</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3>Technical Skills</h3>
+            <div class="skills-list">
+                <ul>
+                    <li><strong>Data Science:</strong> Python, R, SQL, TensorFlow, PyTorch</li>
+                    <li><strong>Analysis:</strong> Excel, Power BI, Tableau, Looker</li>
+                    <li><strong>Databases:</strong> MySQL, PostgreSQL, MongoDB, BigQuery</li>
+                    <li><strong>Web Development:</strong> JavaScript, React, Node.js, Django</li>
+                    <li><strong>Cloud:</strong> AWS, GCP, Azure, Docker, Kubernetes</li>
+                    <li><strong>Tools:</strong> Git, JIRA, Tableau, Power BI</li>
+                </ul>
+            </div>
+
+            <h3>Professional Journey</h3>
+            <p>My career began in software education and mentoring, where I trained hundreds of professionals in web technologies and database systems. This foundation in knowledge transfer complements my technical expertise, enabling me to:</p>
+            <ul>
+                <li>Communicate complex technical concepts to diverse audiences</li>
+                <li>Design data solutions aligned with business objectives</li>
+                <li>Mentor junior team members in best practices</li>
+                <li>Bridge the gap between technical and non-technical stakeholders</li>
+            </ul>
+
+            <p>As a recent graduate with a Master's in Data Science, I combine academic rigor with practical industry experience to deliver innovative data solutions. My approach emphasizes clean, maintainable implementations with measurable business impact.</p>
+
+            <h3>Education</h3>
+            <ul>
+                <li><strong>M.Sc. Data Science</strong> - GISMA University of Applied Sciences, Germany (2023)</li>
+                <li><strong>Master of Computer Applications</strong> - Mahatma Gandhi University, India</li>
+                <li><strong>Bachelor of Computer Applications</strong> - Cochin university of Science & Technology, India</li>
+            </ul>
+        </section>
+
+
+
+    <title>Josmy Mathew - Data Science Professional</title>
+    
+    
+    <div class="about-container">
+        <!-- Intro -->
+        <div class="intro-card">
+            <h1 class="section-title">About Me</h1>
+            <p>I am <strong>Josmy Mathew</strong>, a <span style="color: #4b6cb7;">Data Scientist</span> and <span style="color: #4b6cb7;">Full Stack Developer</span> with 15+ years of experience in IT mentoring and data-driven solutions. My unique blend of technical expertise and coaching experience allows me to transform complex data into actionable strategies while empowering teams to adopt cutting-edge technologies.</p>
+        </div>
+
+        <!-- Career Timeline -->
+        <h2 class="section-title">My Journey</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-date">2021 - 2023</div>
+                <h3>M.Sc. Data Science</h3>
+                <p>GISMA University of Applied Sciences, Germany</p>
+                <p>Specialized in Machine Learning, NLP, and Big Data Analytics. Thesis on "Swimming Performance Visualization" using Python and Tableau.</p>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-date">2010 - 2022</div>
+                <h3>Assistant Professor(Senior)</h3>
+                <p>Saintgits College of Engineering,India</p>
+                <p>Trained 200+ professionals in Full Stack Development, Databases, and Data Analysis tools. Developed customized learning programs.</p>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-date">2008 - 2010</div>
+                <h3>Assistant Professor</h3>
+                <p>Saintgits College of Engineering,India</p>
+                <p>Conducted workshops on Web Technologies (JavaScript, React), Database Design, and Cloud Computing fundamentals.</p>
+            </div>
+            <div class="timeline-item">
+    <div class="timeline-date">2007 - 2008</div>
+    <h3>Lecturer</h3>
+    <p>IBMR,India</p>
+    <p>Conducted workshops on Web Technologies (JavaScript, React), Database Design, and Cloud Computing fundamentals.</p>
+</div>
+        </div>
+
+        <!-- Project Highlights -->
+        <h2 class="section-title">Key Projects</h2>
+        <div class="project-grid">
+            <div class="project-card">
+                <h3>Swimming Performance Analyzer</h3>
+                <p><strong>Technologies:</strong> Python, Tableau, Scikit-learn</p>
+                <p>Developed a visual analytics dashboard for swimming coaches to track athlete performance metrics and predict future outcomes.</p>
+            </div>
+
+            <div class="project-card">
+                <h3>E-commerce Recommendation Engine</h3>
+                <p><strong>Technologies:</strong> Python, TensorFlow, Flask</p>
+                <p>Built a hybrid recommendation system combining collaborative filtering and NLP techniques for a retail client.</p>
+            </div>
+
+            <div class="project-card">
+                <h3>IT Training Portal</h3>
+                <p><strong>Technologies:</strong> React, Node.js, MongoDB</p>
+                <p>Created a full-stack learning management system used by 500+ students for technical upskilling.</p>
+            </div>
+        </div>
+
+        
+
+
+<!-- My Works Section -->
+<h2>My Works</h2>
+
+<div class="projects-nav">
+    <a href="#">Master Thesis Project</a>
+    <a href="#">Integrity Projects</a>
+    <a href="#">HiCounselor Projects</a>
+    <a href="#">University Projects</a>
+    <a href="#">Portfolio Projects</a>
+    <a href="#">Virtual Internships</a>
+    <a href="#">Resources</a>
+</div>
+
+<h3>Master Thesis and University Projects</h3>
+
+<div class="project-card">
+    <h4 class="project-title">An understandable visualization of Swimming Performance</h4>
+    <div class="project-meta">
+        Master Thesis<br>
+        Josmy Mathew and [Collaborator Name]<br>
+        March 2023
+    </div>
+    <p>An understandable visual analysis of swimming activities</p>
+</div>
+
+<!-- You can add more project cards here -->
+
+<p>Email: <a href="mailto:josmyrose@gmail.com">josmyrose@gmail.com</a></p>
+    </div>
+</body>
+</html>
